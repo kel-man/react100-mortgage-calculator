@@ -9,7 +9,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className='container'>
-        {
+        
           <div><input name='balance' type='number'></input>
           <input name='rate' type='number'></input>
           <select name='term'>
@@ -18,18 +18,18 @@ export default class App extends React.Component {
             </select>
             <button name='submit' onclick = 'calculate(.state)'>Submit!</button>
             <div name='output' id='output'></div>
-      }
       </div>
-        });
-  </div>
-  ,
-  constructor(props){
+      </div>
+        )};  //Lyrics for Achy Breaky Song Gimme two steps gimme two steps mistah 
+  
+  constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
     console.log(this.props);
+  }
     // I do not understand what a constructor does after three hours of reading about it. LIAM HELP ME NIISAN
     //more arbitrary notes to fill th epage while i read nonsense this is more stuffmore fluff ill figure out a way to get us out of here
-  }
+  
     //initialize state of app with constructor function
   
                /*insert function to update state values when an input changes, 
