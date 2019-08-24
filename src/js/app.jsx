@@ -20,16 +20,14 @@ export default class App extends React.Component {
             <div name='output' id='output'></div>
       </div>
       </div>
-        )};  //Lyrics for Achy Breaky Song Gimme two steps gimme two steps mistah 
+        )};  
   
   constructor(props) {
     super(props);
     this.state = {};
     console.log(this.props);
   }
-    // I do not understand what a constructor does after three hours of reading about it. LIAM HELP ME NIISAN
-    //more arbitrary notes to fill th epage while i read nonsense this is more stuffmore fluff ill figure out a way to get us out of here
-  
+    
     //initialize state of app with constructor function
   
                /*insert function to update state values when an input changes, 
@@ -43,22 +41,6 @@ export default class App extends React.Component {
                /*This function should accept 3 parameters: balance, rate, and term. Finally, return to your 
                HTML and add an onClick event to this button that calls the calculate function while passing 
                the state object as an argument.*/
-               /**THIS IS A BUNCH OF RANDOM CHARACTERS SO WAKITIME WILL DO SOMETHING FOR ME THANKS 
-                * HERES SOME MORE RANDOM CHARACTERS FOR YOU WAKATIME HAVE FUN WITH THAT
-                * HEY LOOK AT THAT MORE WHITE TEXT WAKATIME
-                * k more textmore text more textmoretext SHUT UP CORTANA
-                * My legs are tingling. I can feel my heart beating. This is probably a good thing because it means it has more strength, more pressure
-                * I cannnot sit still
-                * time time time time time time time time time time time time 
-                */
-
+               
 }
 
-/*
-class helloWorld{
-public static void main(string[] args){
-  system.out.println("Hello World!")
-}} This is java*/
-
-
-/** Need to research options menus once again. Look up how to generate them using constructors, review constructor structure */
