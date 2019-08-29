@@ -1,46 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+ 
 function calculate(balance, rate, term){
-  return html;
-  }
+  //monthly payment = principal*(rate*(1+rate)^#ofpayments)/((1+rate)^#ofpayments)-1)
+  //needs to return an html value that will do something useful
+  /*balance = 0;
+  rate = this.props.rate;
+  term = this.props.term;*/
+
+  paymentDue = balance * ( ( rate * ( 1 + rate ) ^ term ) / ( ( 1 + rate ) ^ term ) - 1 );
+  return paymentDue;
+}
 
 export default class App extends React.Component {
-  // your Javascript goes here
+  constructor(props) {
+    super(props);
+    this.state = {
+      balance : 0,
+      rate : 0,
+      term : 0
+    };
+  }
+
   render() {
     return (
       <div className='container'>
-        
-          <div><input name='balance' type='number'></input>
-          <input name='rate' type='number'></input>
-          <select name='term'>
-            <option value='15, 30'>15</option>
-            <option value='30'>30</option>
-            </select>
-            <button name='submit' onclick = 'calculate(.state)'>Submit!</button>
-            <div name='output' id='output'></div>
+        <form className='form'>
+          <input className='balance' type='number' placeholder='Balance: ' />
+          <input className='rate' type='number' placeholder='Rate: ' step='0.01'/>
+          <select className='term'>
+            <option value='15'>15 months</option>
+            <option value='30'>30 months</option>
+          </select>
+          <button className='submit' id='submit' onclick='calculate(balance, rate, term)'>Calculate Payment!</button>
+            <div className='output' id='output' >Payment due: </div>
+        </form>
       </div>
-      </div>
-        )};  
-  
-  constructor(props) {
-    super(props);
-    this.state = {};
-    console.log(this.props);
+    ); 
   }
-    
-    //initialize state of app with constructor function
-  
-               /*insert function to update state values when an input changes, 
-               using event binding. Once this is in place, return to your HTML 
-               and add an onChange event to each of the input elements that calls this new method.*/
-
-               /*calculate function to determine the mortgage payment and then set state to bind the 
-               result to the div with an id of 'output' as a string like this: $1945.09 is your payment.*/
-
-
-               /*This function should accept 3 parameters: balance, rate, and term. Finally, return to your 
-               HTML and add an onClick event to this button that calls the calculate function while passing 
-               the state object as an argument.*/
-               
 }
-
