@@ -1,41 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
  
-function calculate(balance, rate, term){
+//function calculate(balance, rate, term){
   //monthly payment = principal*(rate*(1+rate)^#ofpayments)/((1+rate)^#ofpayments)-1)
   //needs to return an html value that will do something useful
   /*balance = 0;
   rate = this.props.rate;
   term = this.props.term;*/
-
-  paymentDue = balance * ( ( rate * ( 1 + rate ) ^ term ) / ( ( 1 + rate ) ^ term ) - 1 );
-  return paymentDue;
-}
+  /*balance = this.balance;
+  rate = this.rate;
+  term = this.term;
+  const paymentDue = (balance * ( ( rate * ( 1 + rate ) ^ term ) / ( ( 1 + rate ) ^ term ) - 1 ));
+  //#output.innerHTML(paymentDue);
+  return <div>{paymentDue}</div>;*/
+//}
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      balance : 0,
-      rate : 0,
-      term : 0
-    };
+    this.state = {};
+    this.balance = "";
+    this.handleBalanceClick = (e) => {
+      this.balance = e.target.value;
+      console.log('I was clicked!');
+    }
   }
 
   render() {
     return (
       <div className='container'>
         <form className='form'>
-          <input className='balance' type='number' placeholder='Balance: ' />
+          <input className='balance' type='number' placeholder='Balance: ' value={this.balance} 
+            onChange={this.handleBalanceClick} />
           <input className='rate' type='number' placeholder='Rate: ' step='0.01'/>
           <select className='term'>
             <option value='15'>15 months</option>
             <option value='30'>30 months</option>
           </select>
-          <button className='submit' id='submit' onclick='calculate(balance, rate, term)'>Calculate Payment!</button>
+          <button className='submit' id='submit' >Calculate Payment!</button>
             <div className='output' id='output' >Payment due: </div>
         </form>
       </div>
     ); 
   }
+
+
+
 }
