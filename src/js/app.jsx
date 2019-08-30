@@ -24,6 +24,15 @@ export default class App extends React.Component {
       this.balance = e.target.value;
       console.log('I was clicked!');
     }
+    this.handleRateClick = (a) => {
+      this.rate = a.target.value;
+      console.log('Rate was clicked!');
+    }
+    this.handleSubmit = (i) => {
+      this.calculatePayment
+      console.log('Submitted!');
+    }
+
   }
 
   render() {
@@ -32,12 +41,13 @@ export default class App extends React.Component {
         <form className='form'>
           <input className='balance' type='number' placeholder='Balance: ' value={this.balance} 
             onChange={this.handleBalanceClick} />
-          <input className='rate' type='number' placeholder='Rate: ' step='0.01'/>
+          <input className='rate' type='number' placeholder='Rate: ' step='0.01' value={this.rate}
+            onChange={this.handleRateClick} />
           <select className='term'>
             <option value='15'>15 months</option>
             <option value='30'>30 months</option>
           </select>
-          <button className='submit' id='submit' >Calculate Payment!</button>
+          <button className='submit' id='submit' onChange={this.handleSubmit} >Calculate Payment!</button>
             <div className='output' id='output' >Payment due: </div>
         </form>
       </div>
