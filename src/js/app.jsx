@@ -10,46 +10,71 @@ import ReactDOM from 'react-dom';
   /*balance = this.balance;
   rate = this.rate;
   term = this.term;
-  const paymentDue = (balance * ( ( rate * ( 1 + rate ) ^ term ) / ( ( 1 + rate ) ^ term ) - 1 ));
   //#output.innerHTML(paymentDue);
   return <div>{paymentDue}</div>;*/
-//}
+  //}
+  
+  class App extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        balance: "",
+        payment: "",
+        term: "",
+        rate: ""
+      };
+      
+      this.handleBalanceClick = this.handleBalanceClick.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleRateClick = this.handleRateClick.bind(this);
+      this.handleSelect = this.handleSelect.bind(this);
+    }
+    
+    handleSubmit(e) {
+      e.preventDefault();
+      var rate = Number(this.state.rate)/12;
+      var balance = Number(this.state.balance);
+      var term = Number(this.state.term);
+      var paymentDue = (
+        balance * (
+          (rate * Math.pow(( 1 + rate ) , term )) / (Math.pow(  1 + rate , term ) - 1 )));
+      this.setState({payment: paymentDue});
+      console.log(this.state);
+  }
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.balance = "";
-    this.handleBalanceClick = (e) => {
-      this.balance = e.target.value;
-      console.log('I was clicked!');
-    }
-    this.handleRateClick = (a) => {
-      this.rate = a.target.value;
-      console.log('Rate was clicked!');
-    }
-    this.handleSubmit = (i) => {
-      this.calculatePayment
-      console.log('Submitted!');
-    }
+  handleRateClick(e) {
+    this.setState({ 
+      rate: e.target.value
+    });
+  }
 
+  handleBalanceClick(e) {
+    this.setState({
+      balance: e.target.value
+    });
+  }
+
+  handleSelect(e) {
+    this.setState({
+      term: e.target.value
+    })
   }
 
   render() {
     return (
       <div className='container'>
-        <form className='form'>
-          <input className='balance' type='number' placeholder='Balance: ' value={this.balance} 
+        <form className='form'  onSubmit={this.handleSubmit}>
+          <input className='balance' type='number' placeholder='Balance: ' value={this.state.balance} 
             onChange={this.handleBalanceClick} />
-          <input className='rate' type='number' placeholder='Rate: ' step='0.01' value={this.rate}
+          <input className='rate' type='number' placeholder='Rate: ' step='0.01' value={this.state.rate}
             onChange={this.handleRateClick} />
-          <select className='term'>
+          <select className='term' onChange={this.handleSelect} type='number' value={this.state.term}>
             <option value='15'>15 months</option>
             <option value='30'>30 months</option>
           </select>
-          <button className='submit' id='submit' onChange={this.handleSubmit} >Calculate Payment!</button>
-            <div className='output' id='output' >Payment due: </div>
+          <button type='submit' className='submit' id='submit'  >Calculate Payment!</button>
         </form>
+          <div className='output' id='output' >Payment Due: {this.state.payment}</div>
       </div>
     ); 
   }
@@ -57,3 +82,6 @@ export default class App extends React.Component {
 
 
 }
+
+
+export default App;
