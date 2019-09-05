@@ -4,6 +4,7 @@
   "description": "Base application setup for creating a new react project.",
   "main": "server/index.js",
   "scripts": {
+    "watch": "webpack --mode development --watch",
     "build": "npm run less && webpack --mode development",
     "start": "node server/index.js",
     "less": "lessc src/css/style.less dist/css/style.css",
@@ -28,6 +29,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "serve-favicon": "^2.5.0",
+    "watch": "^1.0.2",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
   },

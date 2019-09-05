@@ -1,26 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
  
-//function calculate(balance, rate, term){
-  //monthly payment = principal*(rate*(1+rate)^#ofpayments)/((1+rate)^#ofpayments)-1)
-  //needs to return an html value that will do something useful
-  /*balance = 0;
-  rate = this.props.rate;
-  term = this.props.term;*/
-  /*balance = this.balance;
-  rate = this.rate;
-  term = this.term;
-  //#output.innerHTML(paymentDue);
-  return <div>{paymentDue}</div>;*/
-  //}
-  
   class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         balance: "",
         payment: "",
-        term: "",
+        term: "15",
         rate: ""
       };
       
@@ -32,19 +19,17 @@ import ReactDOM from 'react-dom';
     
     handleSubmit(e) {
       e.preventDefault();
-      var rate = Number(this.state.rate)/12;
+      var rate = Number(this.state.rate)/100/12;
       var balance = Number(this.state.balance);
-      var term = Number(this.state.term);
-      var paymentDue = (
-        balance * (
-          (rate * Math.pow(( 1 + rate ) , term )) / (Math.pow(  1 + rate , term ) - 1 )));
+      var term = Number(this.state.term)*12;
+      var paymentDue = Number((balance*((rate*Math.pow((1+rate ),term ))/(Math.pow(1+rate,term)-1)))).toFixed(2);
       this.setState({payment: paymentDue});
       console.log(this.state);
   }
 
   handleRateClick(e) {
     this.setState({ 
-      rate: e.target.value
+      rate: (e.target.value)
     });
   }
 
@@ -63,18 +48,19 @@ import ReactDOM from 'react-dom';
   render() {
     return (
       <div className='container'>
+        <p>Mortgage Calculator</p>
         <form className='form'  onSubmit={this.handleSubmit}>
-          <input className='balance' type='number' placeholder='Balance: ' value={this.state.balance} 
+          <input className='balance' name='balance' type='number' placeholder='Balance: ' value={this.state.balance} 
             onChange={this.handleBalanceClick} />
-          <input className='rate' type='number' placeholder='Rate: ' step='0.01' value={this.state.rate}
+          <input className='rate' name='rate' type='number' placeholder='Rate: ' step='0.01' value={this.state.rate}
             onChange={this.handleRateClick} />
-          <select className='term' onChange={this.handleSelect} type='number' value={this.state.term}>
-            <option value='15'>15 months</option>
-            <option value='30'>30 months</option>
+          <select className='term' name='term' onChange={this.handleSelect} type='number' value={this.state.term}>
+            <option value='15'>15 years</option>
+            <option value='30'>30 years</option>
           </select>
-          <button type='submit' className='submit' id='submit'  >Calculate Payment!</button>
+          <button type='submit' name='submit' className='submit' id='submit'>Calculate Payment!</button>
         </form>
-          <div className='output' id='output' >Payment Due: {this.state.payment}</div>
+          <div className='output' id='output' name='output'>Payment Due: {this.state.payment}</div>
       </div>
     ); 
   }
@@ -82,6 +68,5 @@ import ReactDOM from 'react-dom';
 
 
 }
-
 
 export default App;
