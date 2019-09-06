@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
- 
+// import ShallowRenderer from 'react-test-renderer/shallow';
+// const renderer = new ShallowRenderer();
   class App extends React.Component {
     constructor(props) {
       super(props);
@@ -24,7 +25,7 @@ import ReactDOM from 'react-dom';
       var term = Number(this.state.term)*12;
       var paymentDue = Number((balance*((rate*Math.pow((1+rate ),term ))/(Math.pow(1+rate,term)-1)))).toFixed(2);
       this.setState({payment: paymentDue});
-      console.log(this.state);
+      // console.log(this.state);
   }
 
   handleRateClick(e) {
@@ -48,7 +49,7 @@ import ReactDOM from 'react-dom';
   render() {
     return (
       <div className='container'>
-        <p>Mortgage Calculator</p>
+        <h3>Mortgage Calculator</h3>
         <form className='form'  onSubmit={this.handleSubmit}>
           <input className='balance' name='balance' type='number' placeholder='Balance: ' value={this.state.balance} 
             onChange={this.handleBalanceClick} />
