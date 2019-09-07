@@ -1,22 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import ShallowRenderer from 'react-test-renderer/shallow';
-// const renderer = new ShallowRenderer();
-  class App extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        balance: "",
-        payment: "",
-        term: "15",
-        rate: ""
-      };
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      balance: "",
+      payment: "",
+      term: "15",
+      rate: ""
+    };
       
       this.handleBalanceClick = this.handleBalanceClick.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleRateClick = this.handleRateClick.bind(this);
       this.handleSelect = this.handleSelect.bind(this);
-    }
+  }
     
     handleSubmit(e) {
       e.preventDefault();
@@ -25,7 +23,6 @@ import ReactDOM from 'react-dom';
       var term = Number(this.state.term)*12;
       var paymentDue = Number((balance*((rate*Math.pow((1+rate ),term ))/(Math.pow(1+rate,term)-1)))).toFixed(2);
       this.setState({payment: paymentDue});
-      // console.log(this.state);
   }
 
   handleRateClick(e) {
