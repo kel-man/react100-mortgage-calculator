@@ -16,13 +16,13 @@ class App extends React.Component {
       this.handleSelect = this.handleSelect.bind(this);
   }
     
-    handleSubmit(e) {
-      e.preventDefault();
-      var rate = Number(this.state.rate)/100/12;
-      var balance = Number(this.state.balance);
-      var term = Number(this.state.term)*12;
-      var paymentDue = Number((balance*((rate*Math.pow((1+rate ),term ))/(Math.pow(1+rate,term)-1)))).toFixed(2);
-      this.setState({payment: paymentDue});
+  handleSubmit(e) {
+    e.preventDefault();
+    var rate = Number(this.state.rate)/100/12;
+    var balance = Number(this.state.balance);
+    var term = Number(this.state.term)*12;
+    var paymentDue = Number((balance*((rate*Math.pow((1+rate ),term ))/(Math.pow(1+rate,term)-1)))).toFixed(2);
+    this.setState({payment: paymentDue});
   }
 
   handleRateClick(e) {
